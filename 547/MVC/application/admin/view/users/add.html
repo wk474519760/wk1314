@@ -1,0 +1,189 @@
+<!-- 添加新闻 -->
+<style>
+.am-form ul{list-style-type:none;}
+.am-form ul li{margin-top:15px;}
+.am-form ul li input['type=checkbox']{margin-right:10px;}
+
+</style>		
+		
+		
+	<!--	<div class="am-g">-->
+		<!-- ============================================================== -->
+		<!-- Start right Content here -->
+		<div class="content-page">
+			<!-- Start content -->
+			<div class="content">
+				<div class="am-g">
+					<!-- Row start -->
+						<div class="am-u-sm-12">
+							<div class="card-box">
+								<ul class="am-nav am-fr">
+								  <li class="am-dropdown" data-am-dropdown>
+								    <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+								       <span class="am-icon-caret-down"></span>
+								    </a>
+								    <ul class="am-dropdown-content">
+								      <li>1231234</li>
+								      <li>1231234</li>
+								      <li>1231234</li>
+								      <li>1231234</li>
+								    </ul>
+								  </li>
+								</ul>
+								
+								<h4 class="header-title m-t-0 m-b-30">新增用户</h4>
+								
+								<div class="am-g">
+									<div class="am-u-md-6">
+										<form class="am-form am-text-sm" method="post" enctype="multipart/form-data">
+											<div class="am-form-group">
+												<div class="am-g">
+											      <label class="am-u-md-2 am-md-text-right am-padding-left-0" for="doc-ipt-text-1">用户民</label>
+											      <input class="am-u-md-10 form-control"  id="doc-ipt-text-1" placeholder="用户名" name="username">
+										      </div>
+										    </div>
+					    
+										    <div class="am-form-group">
+										    	
+										    </div>
+										    
+										    <div class="am-form-group">
+										    	<div class="am-g">
+											      <label class="am-u-md-2 am-md-text-right am-padding-left-0" for="doc-ipt-phd-1">密码</label>
+											      <input class="am-u-md-10 form-control"  id="doc-ipt-phd-1" placeholder="密码" name="pwd">
+											    </div>
+										    </div>
+										    <div class="am-form-group">
+												<div class="am-g">
+											      <label class="am-u-md-2 am-md-text-right am-padding-left-0" for="doc-ipt-text-1">email</label>
+											      <input class="am-u-md-10 form-control"  id="doc-ipt-text-1" placeholder="email" name="email">
+										      </div>
+										    </div>
+					    
+										    <div class="am-form-group">
+										    	
+										    </div>
+										    
+										    <div class="am-form-group">
+										    	<div class="am-g">
+											      <label class="am-u-md-2 am-md-text-right am-padding-left-0" for="doc-ipt-phd-1">联系方式</label>
+											      <input class="am-u-md-10 form-control"  id="doc-ipt-phd-1" placeholder="联系方式" name="phone">
+											    </div>
+										    </div>
+										    <div class="am-form-group">
+												<div class="am-g">
+											      <label class="am-u-md-2 am-md-text-right am-padding-left-0" for="doc-ipt-text-1">权限</label>
+											      
+										      </div>
+										    </div>
+										    <ul id="level">
+										    <li><input id="checkall" type="checkbox"/>全选</li>
+												<!-- 1.遍历表单menu的数据 $k=大标题  $v=大标题对应的子菜单
+												2.判断当前的大标题是否有其对应的子菜单
+												3.如果存在就遍历当前子菜单。 -->																								    
+										      <?php
+										    foreach($menu as $k=>$v){    
+											?>
+											<li>
+										    	<input type="checkbox" value="<?=$v['id']?>" name="level[]" class="mainmenu"/><?=$k?>
+										    <?php
+										    if(isset($v['submenu'])){
+										    	foreach($v['submenu'] as $subv){
+										    	?> 
+													<input type="checkbox" value="<?=$subv['id']?>" name="level[]" class="submenu"/><?=$subv['title']?>
+										    	<?php
+										    	}
+										    }
+										    ?>	    
+											</li>
+										    <?php
+										    }
+										    ?>
+										    </ul>
+					    
+										
+										 
+											      
+											  
+										      <button type="submit" class="am-btn am-btn-primary">Submit</button>
+										</form>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						
+					<!-- Row end -->
+				</div>
+			
+			
+			>
+						</form>
+					</div>
+				</div>
+				<!-- col end -->
+			</div>
+			<!-- row end -->
+			
+			</div>
+		</div>
+		<!-- end right Content here -->
+
+		
+
+    <!-- 配置文件 -->
+<script>
+    $('#checkall').click(function(){    	
+    	//点击全选按钮 改变状态
+    	var status=$(this).is(':checked');
+    	//alert(status);
+    	$('#level input').prop('checked',status);    	
+    });
+    
+    
+    //主菜单
+     $('.mainmenu').click(function(){
+    	 //alert(1);
+    	var status=$(this).is(':checked');
+		$(this).siblings().prop('checked',status);//他的兄弟级菜单和主菜单的状态一样 
+		checkAll();  
+     });
+     
+     
+     //子菜单
+     $('.submenu').click(function(){
+    	var status=$(this).is(':checked');
+    	if(status){
+    		$(this).parent().children('.mainmenu').prop('checked',true);		
+    	}else{
+    		//var submenu=$(this).parent().children('.submenu'); //所有的子菜单
+    		var submenu_ck=$(this).parent().children('.submenu:checked');  //所有被选中的子菜单
+    		if(submenu_ck.length==0){
+    			$(this).parent().children('.mainmenu').prop('checked',false);
+    			
+    		}
+    	}
+    	checkAll();
+    });
+     //判断是否已全部选中
+     function checkAll(){
+    	 var select=$('#level li input.mainmenu,#level li input.submenu').length;
+    	 var select_ck=$('#level li input.mainmenu:checked,#level li input.submenu:checked').length;
+    	 console.log(select);
+    	 //console.log()
+    	 
+    	 if(select==select_ck){
+    		 $('#checkall').prop('checked',true);
+    	 }else{
+    		 $('#checkall').prop('checked',false); 
+    	 }
+    	 
+    	 
+     };
+        
+       var erro="<?= $erro ?>";
+        //alert(erro);
+			if(erro.length>0){
+				alert(erro);
+			}
+</script>

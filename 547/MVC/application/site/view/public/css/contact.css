@@ -1,0 +1,149 @@
+.banner{
+    width: 100%;
+    overflow: hidden;
+}
+/*content*/
+.content{
+    width: 100%;
+    overflow: hidden;
+}
+.content .center .main {
+    margin-right: 100px;
+}
+.content .center .main .contact{
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+.content .center .main .contact .map{
+    overflow: hidden;
+}
+.content .center .main .contact .map h3{
+    font-size: 18px;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    color: #323333;
+    float: left;
+}
+.content .center .main .contact .map img{
+    display: block;
+    float: left;
+    margin-bottom: 16px;
+}
+.content .center .main .contact .map p{
+    float: left;
+    margin-left: 20px;
+    font-size: 14px;
+    line-height: 38px;
+    color: #323333;
+    width: 350px;
+    text-align: left;
+}
+.content .center .main .contact .leave-word{
+    margin-top: 20px;
+    width: 100%;
+    overflow: hidden;
+}
+.content .center .main .contact .leave-word h3{
+    text-align: center;
+    font-size: 18px;
+    color: #323333;
+}
+.content .center .main .contact .leave-word form{
+    margin-top: 20px;
+    width: 100%;
+}
+.content .center .main .contact .leave-word form input{
+    width: 450px;
+    background: #eeebea;
+    margin: 0 36px 52px 0;
+    border: none;
+    padding-left: 10px;
+    line-height: 42px;
+    font-size: 17px;
+    float: left;
+    height: 42px;
+    color: #666;
+}
+.content .center .main .contact .leave-word form textarea{
+    float: right;
+    width: 462px;
+    height: 150px;
+    background: #eeebea;
+    outline: none;
+    resize: none;
+    padding: 6px;
+    border: 0;
+    font-size: 17px;
+    overflow: auto;
+    color: #666;
+}
+.content .center .main .contact .leave-word form a{
+    width: 128px;
+    line-height: 42px;
+    background: #eeebea;
+    color: #336699;
+    float: right;
+    display: block;
+}
+.content .center .main .contact .leave-word form a img{
+    width: 128px;
+    line-height: 42px;
+    background: #eeebea;
+    color: #336699;
+    float: right;
+    height: 42px;
+    display: block;
+}
+.content .center .main .contact .leave-word form a ~ a{
+    margin: 0 30px;
+}
+
+.content .center .main .contact .leave-word form a ~ input {
+    display: block;
+    float: right;
+    width: 128px;
+    margin-right: 20px;
+    line-height: 42px;
+    color: #333333;
+}
+.content .center .main .contact .leave-word form button{
+    width: 102px;
+    line-height: 30px;
+    background: #5a84ae;
+    float: right;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+}
+.content .center .main .contact .leave-word form button ~ input{
+    width: 102px;
+    height: 30px;
+    background: #5a84ae;
+    float: right;
+    color: #fff;
+    border: none;
+    line-height: 24px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    padding: 0;
+}
+
+.content .center .main .contact .leave-word form #code::-webkit-input-placeholder{
+    color: #000;
+}
+.content .center .main .contact .leave-word form #code::-ms-input-placeholder{
+    color: #000;
+}
+.content .center .main .contact .leave-word form #code::-moz-input-placeholder{
+    color: #000;
+}
+
+
+
+
+

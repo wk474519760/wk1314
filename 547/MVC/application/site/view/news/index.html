@@ -1,0 +1,349 @@
+<!--前台  新闻中心  -->
+<div class="header">
+
+        <div class="top">
+
+            <div class="logo">
+
+                <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+
+            </div>
+
+            <ul>
+				<li><a href="<?=url('index/index') ?>">首页</a></li>
+
+                <li><a href="<?=url('about/index') ?>">公司介绍</a></li>
+
+                <li><a href="<?=url('news/index') ?>" class="current">新闻中心</a></li>
+
+                <li><a href="<?=url('product/index') ?>">产品中心</a></li>
+
+                <li><a href="<?=url('contact/index') ?>">联系我们</a></li>
+
+            </ul>
+
+        </div>
+
+    </div>
+    <!--banner-->
+    <link rel="stylesheet" href="css/news.css">
+
+    <div class="banner">
+
+        <img src="images/banner_4.png" alt="banner_4">
+
+    </div>
+
+    <!--content-->
+
+    <div class="content">
+
+        <div class="center">
+
+            <div class="slider">
+
+
+
+                <ul>
+
+                    <li><a href="#" class="current">新闻中心<i></i></a></li>
+
+                    <li><a href="#">最新动态<i></i></a></li>
+
+                    <li><a href="#">热点聚焦<i></i></a></li>
+
+                    <li><a href="#">行业新闻<i></i></a></li>
+
+                    <li><a href="#">企业新闻<i></i></a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="main">
+
+                <div class="location">
+
+                        <em>↘</em>
+
+                        <span>您当前的位置是：</span>
+
+                        <a href="index.html">首页</a> <span>></span>
+
+                        <a class="on">新闻中心</a>
+
+                </div>
+                <?php
+                $url=url('');
+				?>
+                <div class="news_list">
+
+                    <ul class="new_title">
+                    <?php
+                     foreach($date['res'] as $v){
+					   $v['content']=mb_substr(strip_tags($v['content']),0,50,'utf8').'......';
+					
+
+    
+					
+                    ?>
+                    <!-- $v['time']=strtotime($v['time']); -->
+                        <li>
+
+                            <span>
+
+                                <em><?=$v['D']   ?></em>
+
+                                <i><?=$v['Y']   ?></i>
+
+                            </span>
+
+                            <h3><a href="<?=url('news_detalited/index')?>&id=<?=$v['id']?>"><?=$v['title'] ?></a></h3>
+
+                            <p>
+
+                                <?=$v['content'] ?>
+
+                            </p>
+
+                            <a href="<?=url('news_detalited/index')?>&id=<?=$v['id']?>">查看详情>></a>
+
+                        	</li>
+                        	<?php
+                        	}
+							?>
+
+<!--                         <li>
+
+                            <span>
+
+                                <em>17</em>
+
+                                <i>2017-08</i>
+
+                            </span>
+
+                            <h3><a href="news_detailed.html">LED屏的霸主——LED格栅屏的技术特点</a></h3>
+
+                            <p>
+
+                                LED格栅屏的出现突破了LED电子显示屏对楼体、墙面的诸多限制，使得LED工程变得更加灵活多变，更多快速广泛应用到各领域。
+
+                            </p>
+
+                            <a href="news_detailed.html">查看详情>></a>
+
+                        </li>
+
+                        <li>
+
+                            <span>
+
+                                <em>17</em>
+
+                                <i>2017-08</i>
+
+                            </span>
+
+                            <h3><a href="news_detailed.html">LED玻璃与LED显示屏的那些误解</a></h3>
+
+                            <p>
+
+                                LED玻璃是什么？它与LED显示屏有什么关联？先说说LED玻璃，它又叫通电发光玻璃、最早右德国发明，在国内2006年成功研发。
+
+                            </p>
+
+                            <a href="news_detailed.html">查看详情>></a>
+
+                        </li>
+
+                        <li>
+
+                            <span>
+
+                                <em>17</em>
+
+                                <i>2017-08</i>
+
+                            </span>
+
+                            <h3><a href="news_detailed.html">LED幕墙灯条故障检测排除的方法</a></h3>
+
+                            <p>
+
+                                城市亮化中LED灯条显示屏也是非常常见的装饰材料、亮化材料、灯光材料，LED幕墙灯条外形为镂空形状，有良好的透光。
+
+                            </p>
+
+                            <a href="news_detailed.html">查看详情>></a>
+
+                        </li>
+
+                        <li>
+
+                            <span>
+
+                                <em>17</em>
+
+                                <i>2017-08</i>
+
+                            </span>
+
+                            <h3><a href="news_detailed.html">LED透明屏PK传统LED广告屏</a></h3>
+
+                            <p>
+
+                                LED屏的江湖中有一个传说：LED透明屏将会完败LED广告屏，而今天这已经不再是传说中的故事。
+
+                            </p>
+
+                            <a href="news_detailed.html">查看详情>></a>
+
+                        </li>
+
+                        <li>
+
+                            <span>
+
+                                <em>17</em>
+
+                                <i>2017-08</i>
+
+                            </span>
+
+                            <h3><a href="news_detailed.html">透明led显示屏潜力不小，室内应用后劲高</a></h3>
+
+                            <p>
+
+                                虽然led玻璃比led显示屏使用方便，但是很多项目单位使用led显示屏是增项，并不是在最初设计时就包含。
+
+                            </p>
+
+                            <a href="news_detailed.html">查看详情>></a>
+
+                        </li>
+
+                        <li>
+
+                            <span>
+
+                                <em>17</em>
+
+                                <i>2017-08</i>
+
+                            </span>
+
+                            <h3><a href="news_detailed.html">透明LED智能玻璃应用范围广应用场景多</a></h3>
+
+                            <p>
+
+                                我们发现透明LED智能玻璃的使用项目越来越多，相比传统的LED显示屏和LED透明格栅屏，是如何打开市场面向人群的呢。
+
+                            </p>
+
+                            <a href="news_detailed.html">查看详情>></a>
+
+                        </li> -->
+
+                    </ul>
+
+                    <div class="page">
+
+                        <ul>
+                          
+
+                            <li class="prev"><a href="<?=$url?>&page=<?=$date['lastpage']?>">上一页</a></li>
+                            <?php
+                  			for($i=$date['starbtn'];$i<=$date['endbtn'];$i++){
+                    			if($i==$date{'page'}){
+                  			?>
+                       			 <li><a href="<?=$url?>&page=<?=$i?>" class="current"><?=$i?></a></li>
+               				<?php
+                      				}else{
+                    		?>
+                    			<li><a href="<?=$url?>&page=<?=$i?>"><?=$i?></a></li>
+                  			<?php
+                      				}
+                    		}
+
+
+                  			?>
+                          
+
+                            <!-- <li><a href="#" class="current">1</a></li>
+
+                            <li><a href="#">2</a></li>
+
+                            <li><a href="#">3</a></li>
+
+                            <li><a href="#">4</a></li> -->
+
+                            <li class="next"><a href="<?=$url?>&page=<?=$date['nextpage']?>">下一页</a></li>
+
+                            <li class="end"><a href="<?=$url?>&page=<?=$date['P']?>">尾页</a></li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+    var pg=1;
+     $('.page ul').delegate("li a","click",function(){  	 
+    	var href=$(this).attr("href");
+    	alert(href);    	  	
+		newslist(href);		
+		return false;
+    }); 
+    
+	 function newslist(url){
+    $.ajax({
+				type:'get',
+				url:url,
+				//data:{page:pg},
+				dataType:'json',
+				success:function(result){
+				//alert(res)
+				pg=result.page;
+				//var result.res[i].time=date("Y-m-d,H:i:s",result.res[i].time);
+				var $str="";
+				for(var i=0;i<result.res.length;i++){
+					
+					 $str+='<li><span>';
+					 $str+='<em>'+result.res[i].Y+'</em>';
+		
+					 $str+='<i>'+result.res[i].D+'</i>';
+					 $str+='</span><h3><a href="<?=url('news_detalited/index')?>&id=<?=$v['id']?>">'+result.res[i].title+'</a></h3>';
+					 $str+='<p>'+result.res[i].C+'</p>';
+					 $str+='<a href="<?=url('news_detalited/index')?>&id=<?=$v['id']?>">查看详情>></a>';
+					 $str+='</li>';
+				
+				}
+				$('.news_list .new_title').html($str);
+				 var $strbtn='<li  class="prev"><a href="<?=$url?>&page='+result.lastpage+'">上一页</a></li>';             
+		         
+                for(var i=result.starbtn;i<=result.endbtn;i++){
+                  if(result.page==i){
+
+                     $strbtn+='<li><a href="<?=$url?>&page='+i+'"class="current">'+i+'</a></li>';
+                    }else{ 
+
+                  	$strbtn+='<li><a href="<?=$url?>&page='+i+'">'+i+'</a></li>';
+                    }
+                  }
+                   $strbtn+='<li class="next"><a href="<?=$url?>&page='+result.nextpage+'">下一页</a></li>';
+                   $strbtn+='<li class="end"><a href="<?=$url?>&page=<?=$date['P']?>">尾页</a></li>'
+                   $('.page ul').html($strbtn); 
+				}
+    			});
+	}
+    
+				
+				 
+</script>

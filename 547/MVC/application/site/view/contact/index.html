@@ -1,0 +1,152 @@
+<!--前台  联系我们  -->
+<link rel="stylesheet" href="css/contact.css">
+<div class="header">
+
+        <div class="top">
+
+            <div class="logo">
+
+                <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+
+            </div>
+
+            <ul>
+				<li><a href="<?=url('index/index') ?>">首页</a></li>
+
+                <li><a href="<?=url('about/index') ?>">公司介绍</a></li>
+
+                <li><a href="<?=url('news/index') ?>">新闻中心</a></li>
+
+                <li><a href="<?=url('product/index') ?>">产品中心</a></li>
+
+                <li><a href="<?=url('contact/index') ?>" class="current">联系我们</a></li>
+
+            </ul>
+
+        </div>
+
+    </div>
+    <!--banner-->
+
+<div class="banner">
+
+    <img src="images/banner_10.png" alt="banner_10">
+
+</div>
+
+<!--content-->
+
+<div class="content">
+
+    <div class="center">
+
+        <div class="main">
+
+            <div class="location">
+
+                <p>
+
+                    <em>↘</em>
+
+                    <span>您当前的位置是：</span>
+
+                    <a href="index.html">首页</a><span> ></span>
+
+                    <a class="on">联系我们</a>
+
+                </p>
+
+            </div>
+
+            <div class="contact">
+
+                <div class="map">
+
+                    <h3>公司地址</h3>
+
+                    <img src="images/contact.png" alt="contact">
+
+                    <p>国际贸易部</p>
+
+                    <p>TEL：86-769-87909092</p>
+
+                    <p> FAX：86-769-87885575</p>
+
+                    <p>国内贸易部</p>
+
+                    <p>TEL：0769-87720678</p>
+
+                    <p>FAX：0769-87885575</p>
+
+                    <p>联系人：李小姐</p>
+
+                    <p>手机号码：18926805836</p>
+
+                    <p>QQ号码：2481294358</p>
+
+                    <p>国内工厂地址：广东省东莞市塘厦镇莆心湖工业区</p>
+
+                    <!--百度地图容器-->
+
+                    <div style="width:1200px;height:400px;border:#ccc solid 1px;font-size:12px;float:left;" id="map"></div>
+
+                    <script></script>
+
+                </div>
+
+                <div class="leave-word">
+
+                    <h3>留言</h3>
+
+                    <form action="post">
+
+                        <textarea class="myplace" name="text" id="text" cols="30" rows="10" placeholder="留言"></textarea>
+
+                        <input class="myplace" type="text" placeholder="姓名">
+
+                        <input class="myplace" type="text" placeholder="电话">
+
+                        <input class="myplace" type="text" placeholder="E-mail">
+
+                        <a href="###">看不清，换一张</a>
+
+                        <a href="#"><img src="images/yzm.png" alt="yzm"></a>
+
+                        <input class="myplace" type="text" placeholder="验证码">
+
+                        <button>提交</button>
+
+                        <input type="reset" value="重置" id="reset">
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+
+<script src="js/map.js"></script>
+
+<script src="js/jquery1.42.min.js"></script>
+
+<script src="js/placeholder.js"></script>
+
+<script src="js/reset.js"></script>
+
+<script>
+
+    $(function(){
+
+        //将需要使用placeholder的表单元素的类名myplace匹配到下面的方法内即可
+
+        myPalce.init('.myplace');
+
+    });
+
+</script>

@@ -1,0 +1,105 @@
+<!--新闻详情 前台  -->
+<div class="header">
+
+        <div class="top">
+
+            <div class="logo">
+
+                <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+
+            </div>
+
+            <ul>
+				<li><a href="<?=url('index/index') ?>">首页</a></li>
+
+                <li><a href="<?=url('about/index') ?>">公司介绍</a></li>
+
+                <li><a href="<?=url('news/index') ?>" class="current">新闻中心</a></li>
+
+                <li><a href="product.html">产品中心</a></li>
+
+                <li><a href="contact.html">联系我们</a></li>
+
+            </ul>
+
+        </div>
+
+    </div>
+<!--banner-->
+<link rel="stylesheet" href="css/news_detailed.css">
+
+<div class="banner">
+
+    <img src="images/banner_5.png" alt="banner_5">
+
+</div>
+
+<!--content-->
+
+<div class="content">
+
+    <div class="center">
+
+        <div class="slider">
+
+            <ul>
+
+                <li><a href="#" class="current">新闻中心<i></i></a></li>
+
+                <li><a href="#">最新动态<i></i></a></li>
+
+                <li><a href="#">热点聚焦<i></i></a></li>
+
+                <li><a href="#">行业新闻<i></i></a></li>
+
+                <li><a href="#">企业新闻<i></i></a></li>
+
+            </ul>
+
+        </div>
+
+        <div class="main">
+
+            <div class="location">
+
+                    <em>↘</em>
+
+                    <span>您当前的位置是：</span>
+
+                    <a href="<?=url('index/index') ?>">首页</a><span> ></span>
+
+                    <a href="<?=url('news/index') ?>">新闻中心</a><span> ></span>
+
+                    <a class="on">新闻详情</a>
+
+            </div>
+          
+           
+            <div class="news_main">
+            
+
+               <h2>为打造完美节能灯的每一个细节而努力</h2>
+
+                <img src="<?=ADDRESS.$date['images']?>" alt="loading..." />
+   				
+   				<?=$date['content']?>
+   				
+   				
+   				<span>时间：<?=$date['time'] ?> </span>
+
+            </div>
+           
+
+            <div class="flip">
+
+                <a href="#" class="prve">上一篇</a>
+
+                <a href="#" class="next">下一篇</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

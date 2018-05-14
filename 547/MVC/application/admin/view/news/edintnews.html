@@ -1,0 +1,182 @@
+	<!--	<div class="am-g">-->
+	<!--  修改新闻-->
+<style>
+	.uploadimg ul{list-style-type:none;width:800px;margin:10px 0;}
+	.uploadimg ul li{float:left;margin:10px;}
+	.uploadimg ul li img{height:100px;}
+	.uploadimg ul li a{display:block;text-align:center;}
+	.cleanfloat{clear:both;}
+</style>	
+		<!-- ============================================================== -->
+		<!-- Start right Content here -->
+		<div class="content-page">
+			<!-- Start content -->
+			<div class="content">
+				<div class="am-g">
+					<!-- Row start -->
+						<div class="am-u-sm-12">
+							<div class="card-box">
+								<ul class="am-nav am-fr">
+								  <li class="am-dropdown" data-am-dropdown>
+								    <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+								       <span class="am-icon-caret-down"></span>
+								    </a>
+								    <ul class="am-dropdown-content">
+								      <li>1231234</li>
+								      <li>1231234</li>
+								      <li>1231234</li>
+								      <li>1231234</li>
+								    </ul>
+								  </li>
+								</ul>
+								
+								<h4 class="header-title m-t-0 m-b-30">输入框类型</h4>
+								
+								<div class="am-g">
+									<div class="am-u-md-6">
+										<form class="am-form am-text-sm" method="post" enctype="multipart/form-data">
+											<div class="am-form-group">
+												<div class="am-g">
+											      <label class="am-u-md-2 am-md-text-right am-padding-left-0" for="doc-ipt-text-1">新闻标题</label>
+											      <input class="am-u-md-10 form-control"  id="doc-ipt-text-1" placeholder="输入标题信息" name="title" value="<?=$res['title'] ?>">
+										      </div>
+										    </div>
+										 
+										     <div class="am-form-group">
+										    	<div class="am-g">
+										    <label class="am-u-md-2 am-md-text-right" for="doc-select-1">类型</label>
+												      <select id="doc-select-1" name="category">
+												       <?php
+												      		foreach($category as $v){
+																if($v['id']==$res['category']){
+                                                         ?>
+                                                         <option value="<?=$v['id']?>" selected="selected"><?=$v['title']?></option>
+                                                         
+                                                         <?php     
+															}else{
+															?>					
+																<option value="<?=$v['id']?>"><?=$v['title']?></option>
+														<?php
+																}
+																}
+												      
+												      ?>
+												      </select>
+												       </div>
+										   		 </div>
+										    
+									
+										    
+										    <div class="am-form-group">
+										    	
+										    </div>
+										    
+										   
+										    
+										    <div class="am-form-group">
+										    	<div class="am-g">
+											      <label class="am-u-md-2 am-md-text-right am-padding-left-0" for="doc-ta-1">新闻内容</label>
+											      <script id="container" name="content" type="text/plain" style="margin-left:90px;"><?=$res['content'] ?></script>
+										    	</div>
+										    </div>
+										    
+										    <div class="am-form-group">
+										    	<div class="am-g uploadimg">
+											      <label class="am-u-md-2 am-md-text-right am-padding-left-0" for="doc-ipt-phd-1">已获取图片</label>
+											      <!-- <input type="file" name="image[]" multiple="multiple"/> -->
+											      <ul>
+											      <?php
+											      if(!empty($res['images'])){
+													$arr=explode('|',$res['images']);
+													$j=0;
+											      		foreach($arr as $v){										      
+											      ?>
+											      <li>
+											      	<img src="<?=ADDRESS.$v ?> "/>
+											      	<input type='hidden' name='checked[]' value='<?=$j?>' />
+											      	<a href='javascript:;'>删除</a>
+											      </li>
+											      <?php
+											      $j++;
+											      		}	
+													}
+											      ?>
+											      
+											      </ul>
+											      
+											    </div>
+										    </div>
+										    
+										     <div class="am-form-group">
+										    	<div class="am-g">
+										     		<label class="am-u-md-2 am-md-text-right am-padding-left-0" for="doc-ipt-phd-1">图片</label>
+											      	<input type="file"  id="doc-ipt-phd-1"  name="image[]" multiple="multiple" />
+										         </div>
+									    	</div>
+										     	
+											      <div class="uploadimg uploading">
+											      <ul>
+											      </ul>
+											      </div>
+											      <div class="cleanfloat"></div>
+										    
+										      <button type="submit" class="am-btn am-btn-primary">Submit</button>
+										</form>
+									</div>
+								
+								</div>
+							</div>
+						</div>
+						
+					<!-- Row end -->
+				</div>
+			
+			
+			
+						</form>
+					</div>
+				</div>
+				<!-- col end -->
+			</div>
+			<!-- row end -->
+			
+			</div>
+		</div>
+		<!-- end right Content here -->
+
+		
+		
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="ueditor/ueditor.all.js"></script>
+    <script type="text/javascript">
+        var ue = UE.getEditor('container');
+    	var erro="<?=$erro?>"
+			if(erro.length>0){
+				alert(erro);
+			}
+    	$("input[type='file']").change(function(){
+         	//console.log(this.files);
+         	$(".uploading ul li").remove(); //清除之前存在的li标签
+         	var a = 0;
+         	if(window.FileReader){  		//判断浏览器是否支持FileReader
+         		for(var i=0;i<this.files.length;i++){  //循环文件数组
+         			
+         			var fr=new FileReader;          //实例化FileReader
+         			fr.readAsDataURL(this.files[i]);  //读取文件，返回base64格式的文件内容
+         			fr.onloadend=function(e){         //档文件读取完成触发事件
+         				var li="<li><img src='"+e.target.result+"'/><a href='javascript:;'>删除</a><input type='hidden' name='check[]' value='"+a+"' /></li>"
+         				$(".uploading ul").append(li);
+         				a++;
+         			}
+         			
+         		}
+         		      
+         	}else{
+         		alert('您的浏览器不支持预览图片')
+         	}
+         }) 
+           $(".uploadimg ul").on("click","li a",function(){
+        	   $(this).parent().remove();
+           });
+    </script>

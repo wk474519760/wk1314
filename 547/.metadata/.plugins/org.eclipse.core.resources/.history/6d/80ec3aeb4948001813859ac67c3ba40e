@@ -1,0 +1,209 @@
+<?php
+
+   function query($sql,$type="select"){
+        $link=@mysqli_connect('127.0.0.1','root','root','112')or die('鏁版嵁搴撹繛鎺ュけ璐�'); //杩炴帴
+        mysqli_set_charset($link,'utf8'); 
+        $rel=mysqli_query($link,$sql);  
+            case 'select':
+               
+                $data=[];
+                while($row=mysqli_fetch_assoc($rel)){ 
+                    $data[]=$row; 
+                }    
+                return $data;
+                break;
+            case 'insert':
+              
+                return mysqli_insert_id($link);  
+                break;
+            case 'update':
+            case 'delete':
+               
+                return mysqli_affected_rows($link);
+        }
+
+        return false;
+   }
+
+   //鑾峰彇琛ㄤ腑鐨勬墍鏈夊瓧娈�
+   function  getCols($table){
+       
+        $sql="show columns from `$table`";  
+        $data=query($sql);       
+        $data=array_column($data,'Field');
+        return $data;
+
+   }
+
+   //鏂板鏁版嵁锛岄粯璁ゆ暟鎹潵婧愭槸$_POST
+   function dbAdd($table,$data=false){       
+        if(!$data){  //濡傛灉娌℃湁鏁版嵁灏辩敤$_POST涓殑鏁版嵁
+            $data=$_POST;
+        }
+        $colarr=[];
+        $valarr=[];
+        $cols=getCols($table);  //鑾峰彇鎵�鏈夊瓧娈靛悕
+        foreach($data as $k=>$v){   //閬嶅巻鏁扮粍锛屽皢閿拰鍊煎垎寮�锛屽苟涓旈敭瑕佸姞涓婂弽寮曞彿锛屽�艰鍔犱笂鍗曞紩鍙�
+            if(in_array($k,$cols)){
+                $colarr[]="`$k`";
+                $valarr[]="'$v'";
+            }
+        }
+       
+        $colstr=implode(',',$colarr);  //杞崲鎴愬瓧绗︿覆锛岀敤锛屾嫾鎺�
+        $valstr=implode(',',$valarr);
+        $sql="insert into `$table`($colstr)values($valstr)"; 
+        return query($sql,'insert');
+   }
+
+
+   //鍒犻櫎
+   function dbDelete($table,$where){
+        //  "`id`= '' or 1 "         
+        if(empty($where)){  //濡傛灉鏉′欢涓虹┖锛屼笉鎵х敓鍒犻櫎锛岄槻姝㈣鍒�
+            return false;
+        }
+        $sql="delete from  `$table`  where  $where ";
+
+        return query($sql,'delete'); 
+
+   }
+
+   //鏇存柊锛岄粯璁ゆ暟鎹潵婧愭槸$_POST
+   function dbUpdate($table,$where,$data=false){
+        if(empty($where)){
+            return false;
+        }
+        if(!$data){
+            $data=$_POST;
+        }
+        $set='';
+
+        $cols=getCols($table);
+        foreach($data as $k=>$v){   
+            if(in_array($k,$cols)){
+                $set.="`$k`='$v',";
+            }
+            
+        }         
+        $set=substr($set,0,-1);
+
+        $sql="update `$table` set $set where $where ";
+       
+        return query($sql,'update');
+         
+   }
+
+   //鏌ユ壘涓�鏉℃暟鎹紝杩斿洖涓�涓竴缁存暟缁�   
+   function findOne($table,$field='*',$where='',$order=''){
+
+        if(!empty($where)){
+           
+            $where=" where $where ";
+        }
+
+        if(!empty($order)){
+            $order="order by $order";
+        }
+
+        $sql="select $field from `$table` $where  $order limit 1";
+        $ress=query($sql);
+        if($ress){
+          return $ress[0];
+        }else{
+          return false;
+        }
+   }
+
+   //鏌ユ壘鏁版嵁杩斿洖涓�涓簩缁存暟缁� 
+    function findAll($table,$field='*',$where='',$order='',$limit=''){
+
+        if(!empty($where)){
+           
+            $where=" where $where ";
+        }
+
+        if(!empty($order)){
+            $order="order by $order";
+        }
+
+        if(!empty($limit)){
+            $limit=" limit $limit ";
+        }
+
+        $sql="select $field from `$table` $where  $order  $limit";
+
+        return query($sql);
+    }
+     function findCount($table,$where=''){
+    if(!empty($where)){
+        $where="where $where";
+    }
+        $sql="select count(*) as count from `$table` $where";
+        $rows=query($sql)[0]['count'];
+        return $rows;
+}
+ function page($table,$field='*',$where='',$order='',$num='3',$btn_count='5'){
+ $page=empty($_GET['page']) ? 1 : $_GET['page'];
+ $count=findCount($table);
+ 
+  $P=ceil($count/$num);
+  if($page>$P){
+    $page=$P;
+  }
+  if($page<1){
+    $page=1;
+  }
+  if($btn_count>$P){
+    $btn_count=$P;
+  }
+ $limit=($page-1)*$num;
+  $res = findALL($table,$field,$where,$order,"$limit,$num");
+  $lastpage = $page-1;
+  $nextpage = $page+1;
+  
+  $btn=floor($btn_count/2);
+  
+  $starbtn=$page-$btn;
+  $endbtn=$page+$btn;
+
+if($starbtn<1){
+  $starbtn=1;
+  $endbtn=$btn_count;
+}
+if($endbtn>$P){
+  $endbtn=$P;
+  $starbtn=$P-$btn_count+1;
+}
+ $rows=[];
+ return $rows=[
+            'res'=>$res,
+            'page'=>$page,
+            'P'=>$P,
+            'starbtn'=>$starbtn,
+            'endbtn'=>$endbtn,
+            'lastpage'=>$lastpage,
+            'nextpage'=>$nextpage
+ ];
+
+};
+
+function checkLogin(){
+  if(!empty($_SESSION['username'])){
+    return true;
+  }
+  if(!empty($_COOKIE['username'])){
+    $_SESSION['username']=$_COOKIE['username'];
+    return true;
+  }
+  return false;
+}
+function addUser(){
+  $data=array(
+    'username'=>'admin',
+    'pwd'=>'admin',
+    'mail'=>'111@qq.com',
+    'ctime'=>time()
+ );
+  dbAdd('user',$data);
+}

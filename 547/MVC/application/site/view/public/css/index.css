@@ -1,0 +1,327 @@
+
+/*banner*/
+.banner{
+    width: 100%;
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+}
+.banner .slider{
+    overflow: hidden;
+    width: 1920px;
+    margin-left: -960px;
+    left: 50%;
+    position: absolute;
+    z-index: 1;
+}
+
+.banner .slider ul li{
+    float: left;
+    
+}
+.banner .slider ul li img{
+    width: 100%;
+}
+.an{
+    width: 1200px;
+    height: 100px;
+    margin: 0 auto;
+    position: relative;
+    top: -100px;
+    z-index: 9;
+}
+css3-container{
+    /*这个标签是pie为了兼容CSS3效果生成的VML标签*/
+    /*使用的时候前面的选择器自己处理好*/
+    filter: alpha(opacity=50);
+}
+.an em{
+    font-size: 21px;
+    color: #fff;
+    display: block;
+    width: 40px;
+    border-radius: 50%;
+    background: #000;
+    behavior: url(PIE.htc);
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+    text-align: center;
+    line-height: 40px;
+    font-style: normal;
+    cursor: pointer;
+    z-index: 99;
+    position: absolute;
+}
+.an .prev{
+    top: 330px;
+    left: 2%;
+}
+.an .next{
+    top: 330px;
+    left: 98%;
+}
+.an em:hover{
+    background: #3695d2;
+    opacity: 1;
+}
+
+.banner .superSlider > ul{
+    width: 120px;
+    height: 30px;
+    position: absolute;
+    bottom: 12px;
+    left: 46%;
+    z-index: 20;
+}
+.banner .superSlider > ul li{
+    width: 20px;
+    height: 20px;
+    border-radius:50%;
+    behavior: url(PIE.htc);
+    background: #FFFFFF;
+    float: left;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.banner .superSlider > ul li.on,
+.banner .superSlider > ul li:hover{
+    background: #98d5e5;
+}
+
+/*content*/
+.content{
+    width: 100%;
+}
+/*list*/
+.content .list{
+    width: 1200px;
+    margin: 70px auto 0;
+    text-align: center;
+    overflow: hidden;
+}
+.content .list h2{
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+.content .list > p{
+    font-size: 16px;
+}
+.content .list ul{
+    width: 100%;
+    overflow: hidden;
+}
+.content .list ul li{
+    float: left;
+    width: 200px;
+    margin: 30px 0 0 50px;
+}
+.content .list ul li a img{
+    border-radius: 50%;
+    float: left;
+}
+.content .list ul li a {
+    overflow: hidden;
+    display: inline-block;
+    margin-top: 20px;
+}
+.content .list ul li a:first-child{
+    border-radius: 50%;
+    margin-top: 0;
+}
+.content .list ul li p{
+    color: #5479a0;
+    font-size: 18px;
+    text-align: center;
+    display: inline-block;
+}
+.content .list ul li:first-child{
+    margin-left: 140px;
+}
+
+/*title*/
+.title{
+    width: 160px;
+    margin: 0 auto;
+    border: 1px solid #c1c0c0;
+    text-align: center;
+    position: relative;
+}
+.title h2{
+    background: #fff;
+    display: inline-block;
+    font-size: 18px;
+    color: #5479a0;
+    position: absolute;
+    top: -14px;
+    left: 27%;
+}
+
+.title p{
+    font-size: 16px;
+    color: #605e5e;
+    margin-top: 12px;
+    padding-bottom: 6px;
+}
+
+/*about*/
+.content .about{
+    width: 1200px;
+    margin: 30px auto 0;
+    padding-top: 10px;
+}
+
+.content .about .about_main{
+    width: 1200px;
+    margin-top: 20px;
+}
+.content .about .about_main a{
+    display: block;
+}
+.content .about .about_main img{
+    width: 100%;
+    margin-bottom: 14px;
+}
+.content .about .about_main p{
+    text-indent: 2em;
+    line-height: 32px;
+    font-size: 14px;
+    color: #666;
+}
+
+
+/*news*/
+.content .news{
+    width: 1200px;
+    margin: 20px auto;
+    padding-top: 30px;
+    overflow: hidden;
+}
+.content .news_main{
+    width: 1200px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+.content .news_main > a{
+    display: block;
+    width: 574px;
+    float: left;
+}
+.content .news_main ul{
+    width: 600px;
+    margin-left: 26px;
+    float: left;
+}
+.content .news_main ul li{
+    width: 100%;
+    margin-bottom: 3px;
+    overflow: hidden;
+}
+.content .news_main ul li span{
+    display: block;
+    width: 74px;
+    background: url("../images/bg1.png") no-repeat center;
+    float: left;
+    text-align: center;
+}
+.content .news_main ul li span em{
+    display: block;
+    width: 100%;
+    line-height: 60px;
+    color: #fff;
+    font-size: 18px;
+    font-style: normal;
+}
+.content .news_main ul li span i{
+    display: block;
+    width: 100%;
+    line-height: 22px;
+    color: #fff;
+    font-size: 14px;
+    font-style: normal;
+}
+.content .news_main ul li h3{
+    float: left;
+    margin-left: 10px;
+}
+.content .news_main ul li h3 a{
+    font-family: "微软雅黑";
+    font-size: 17px;
+    color: #1c1d1d;
+    font-weight: 500;
+}
+
+.content .news_main ul li p{
+    float: left;
+    width: 516px;
+    font-size: 14px;
+    color: #323333;
+    margin: 8px 0 0 10px;
+    line-height: 28px;
+}
+.content .news_main ul li p > a{
+    float: right;
+    margin-right: 8px;
+    color: #5479a0;
+}
+.content .news_main ul li p > a:hover{
+    color: #c1c0c0;
+}
+
+
+/*product*/
+.content .product{
+    width: 1200px;
+    margin: 20px auto;
+    padding-top: 30px;
+    overflow: hidden;
+}
+.content .product ul{
+    width: 100%;
+    margin-top: 20px;
+    overflow: hidden;
+}
+.content .product ul li{
+    float: left;
+    width: 280px;
+    height: 154px;
+    margin: 0 10px 20px;
+    overflow: hidden;
+}
+.content .product ul li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.content .product ul li a img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.content .product ul li a span{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /*background: rgba(253, 211, 0, 0.5);*/
+    background: #f2dc0f;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    text-align: center;
+    line-height: 154px;
+    color: #000;
+    font-size: 18px;
+}
+.content .product ul li:hover span{
+    display: block;
+}
+
+
+
+
+
+
+
+
+

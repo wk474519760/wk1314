@@ -1,0 +1,61 @@
+.banner{
+    width: 100%;
+    overflow: hidden;
+}
+/*content*/
+.content{
+    width: 100%;
+    overflow: hidden;
+}
+.content .center .main .news_main{
+    width: 100%;
+}
+.content .center .main .news_main h2{
+    margin: 30px auto;
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    font-weight: 500;
+}
+.content .center .main .news_main img{
+    width: 100%;
+}
+.content .center .main .news_main p{
+    text-indent: 2em;
+    font-size: 14px;
+    color: #666;
+    margin-top: 16px;
+    line-height: 24px;
+}
+.content .center .main .news_main span{
+    font-size: 14px;
+    color: #666;
+    display: block;
+    text-align: right;
+    margin: 100px 14px 0 0;
+    border-bottom: 1px solid #adadac;
+    padding-bottom: 10px;
+}
+.content .center .main .flip{
+    width: 92%;
+    margin: 20px auto 0;
+    overflow: hidden;
+}
+.content .center .main .flip a{
+    display: block;
+    width: 60px;
+    height: 24px;
+    border: 1px solid #adadac;
+    color: #666;
+    float: left;
+    text-align: center;
+    line-height: 24px;
+    font-size: 14px;
+}
+.content .center .main .flip a.next{
+    float: right;
+}
+.content .center .main .flip a:hover{
+    background: #5a84ae;
+    color: #fff;
+}

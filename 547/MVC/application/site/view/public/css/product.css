@@ -1,0 +1,74 @@
+.banner{
+    width: 100%;
+    overflow: hidden;
+}
+/*content*/
+.content{
+    width: 100%;
+    overflow: hidden;
+}
+.content .center .main .pro_list{
+    width: 100%;
+    margin-top: 20px;
+}
+.content .center .main .pro_list > ul {
+    overflow: hidden;
+}
+.content .center .main .pro_list > ul a{
+    display: block;
+}
+.content .center .main .pro_list > ul li{
+    float: left;
+    width: 188px;
+    height: 304px;
+    margin: 0 0 20px 40px;
+}
+.content .center .main .pro_list > ul li img{
+    display: block;
+    width: 100%;
+    height: 254px;
+}
+.content .center .main .pro_list > ul li p{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background: #bdbdc0;
+    color: #fff;
+    font-size: 18px;
+}
+.content .center .main .pro_list > ul li:hover p{
+    background: #5a84ae;
+}
+.content .center .main .pro_list .page ul{
+    overflow: hidden;
+    margin: 50px 0 0 22%;
+}
+.content .center .main .pro_list .page ul li{
+    float: left;
+    margin-right: 20px;
+    width: 28px;
+    line-height: 28px;
+    text-align: center;
+}
+.content .center .main .pro_list .page ul li:first-child{
+    width: 64px;
+}
+.content .center .main .pro_list .page ul li:first-child + li + li + li + li + li{
+    width: 64px;
+}
+.content .center .main .pro_list .page ul li:first-child + li + li + li + li + li + li{
+    width: 64px;
+}
+.content .center .main .pro_list .page ul li a{
+    color: #999;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #999999;
+}
+.content .center .main .pro_list .page ul li a:hover{
+    background: #5a84ae;
+    color: #fff;
+    border: 1px solid transparent;
+}

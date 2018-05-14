@@ -1,0 +1,38 @@
+/*banner*/
+.banner{
+    width: 100%;
+}
+.banner img{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+/*content*/
+.content{
+    width: 100%;
+    overflow: hidden;
+}
+.content .center .main .introduce{
+    width: 100%;
+}
+.content .center .main .introduce h2{
+    text-align: center;
+    margin: 20px auto;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.content .center .main .introduce  img{
+    float: left;
+    margin: 0 20px 0 0;
+}
+.content .center .main .introduce  p{
+    text-indent: 2em;
+    font-size: 14px;
+    line-height: 24px;
+}
+.content .center .main .introduce  img + p + p{
+    margin-top: 24px;
+}
+

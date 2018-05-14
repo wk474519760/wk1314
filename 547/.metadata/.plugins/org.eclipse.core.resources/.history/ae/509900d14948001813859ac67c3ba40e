@@ -1,0 +1,211 @@
+<?php
+session_start();
+//热行SQL语句，并根据返回类型来返回数据
+   function query($sql,$type="select"){
+        $link=@mysqli_connect('127.0.0.1','root','root','112')or die('数据库连接失败'); //连接
+        mysqli_set_charset($link,'utf8'); //定义编码
+        $rel=mysqli_query($link,$sql);  //执行
+        switch($type){
+            case 'select':
+                //如果是查询时，返回数组
+                $data=[];
+                while($row=mysqli_fetch_assoc($rel)){  //遍历数据结果集
+                    $data[]=$row; 
+                }    
+                return $data;
+                break;
+            case 'insert':
+                //如果是新增，返回新增ID
+                return mysqli_insert_id($link);  //返回新增的ID
+                break;
+            case 'update':
+            case 'delete':
+                //如果是删除或修改，返回受影响的行数
+                return mysqli_affected_rows($link);
+        }
+
+        return false;
+   }
+
+   //获取表中的所有字段
+   function  getCols($table){
+       
+        $sql="show columns from `$table`";  
+        $data=query($sql);       
+        $data=array_column($data,'Field');
+        return $data;
+
+   }
+
+   //新增数据，默认数据来源是$_POST
+   function dbAdd($table,$data=false){       
+        if(!$data){  //如果没有数据就用$_POST中的数据
+            $data=$_POST;
+        }
+        $colarr=[];
+        $valarr=[];
+        $cols=getCols($table);  //获取所有字段名
+        foreach($data as $k=>$v){   //遍历数组，将键和值分开，并且键要加上反引号，值要加上单引号
+            if(in_array($k,$cols)){
+                $colarr[]="`$k`";
+                $valarr[]="'$v'";
+            }
+        }
+       
+        $colstr=implode(',',$colarr);  //转换成字符串，用，拼接
+        $valstr=implode(',',$valarr);
+        $sql="insert into `$table`($colstr)values($valstr)"; 
+        return query($sql,'insert');
+   }
+
+
+   //删除
+   function dbDelete($table,$where){
+        //  "`id`= '' or 1 "         
+        if(empty($where)){  //如果条件为空，不执生删除，防止误删
+            return false;
+        }
+        $sql="delete from  `$table`  where  $where ";
+
+        return query($sql,'delete'); 
+
+   }
+
+   //更新，默认数据来源是$_POST
+   function dbUpdate($table,$where,$data=false){
+        if(empty($where)){
+            return false;
+        }
+        if(!$data){
+            $data=$_POST;
+        }
+        $set='';
+
+        $cols=getCols($table);
+        foreach($data as $k=>$v){   
+            if(in_array($k,$cols)){
+                $set.="`$k`='$v',";
+            }
+            
+        }         
+        $set=substr($set,0,-1);
+
+        $sql="update `$table` set $set where $where ";
+       
+        return query($sql,'update');
+         
+   }
+
+   //查找一条数据，返回一个一维数组   
+   function findOne($table,$field='*',$where='',$order=''){
+
+        if(!empty($where)){
+           
+            $where=" where $where ";
+        }
+
+        if(!empty($order)){
+            $order="order by $order";
+        }
+
+        $sql="select $field from `$table` $where  $order limit 1";
+        $ress=query($sql);
+        if($ress){
+          return $ress[0];
+        }else{
+          return false;
+        }
+   }
+
+   //查找数据返回一个二维数组 
+    function findAll($table,$field='*',$where='',$order='',$limit=''){
+
+        if(!empty($where)){
+           
+            $where=" where $where ";
+        }
+
+        if(!empty($order)){
+            $order="order by $order";
+        }
+
+        if(!empty($limit)){
+            $limit=" limit $limit ";
+        }
+
+        $sql="select $field from `$table` $where  $order  $limit";
+
+        return query($sql);
+    }
+     function findCount($table,$where=''){
+    if(!empty($where)){
+        $where="where $where";
+    }
+        $sql="select count(*) as count from `$table` $where";
+        $rows=query($sql)[0]['count'];
+        return $rows;
+}
+ function page($table,$field='*',$where='',$order='',$num='3',$btn_count='5'){
+ $page=empty($_GET['page']) ? 1 : $_GET['page'];
+ $count=findCount($table);
+ 
+  $P=ceil($count/$num);
+  if($page>$P){
+    $page=$P;
+  }
+  if($page<1){
+    $page=1;
+  }
+  if($btn_count>$P){
+    $btn_count=$P;
+  }
+ $limit=($page-1)*$num;
+  $res = findALL($table,$field,$where,$order,"$limit,$num");
+  $lastpage = $page-1;
+  $nextpage = $page+1;
+  
+  $btn=floor($btn_count/2);
+  
+  $starbtn=$page-$btn;
+  $endbtn=$page+$btn;
+
+if($starbtn<1){
+  $starbtn=1;
+  $endbtn=$btn_count;
+}
+if($endbtn>$P){
+  $endbtn=$P;
+  $starbtn=$P-$btn_count+1;
+}
+ $rows=[];
+ return $rows=[
+            'res'=>$res,
+            'page'=>$page,
+            'P'=>$P,
+            'starbtn'=>$starbtn,
+            'endbtn'=>$endbtn,
+            'lastpage'=>$lastpage,
+            'nextpage'=>$nextpage
+ ];
+
+};
+
+function checkLogin(){
+  if(!empty($_SESSION['username'])){
+    return true;
+  }
+  if(!empty($_COOKIE['username'])){
+    $_SESSION['username']=$_COOKIE['username'];
+    return true;
+  }
+  return false;
+}
+function addUser(){
+  $data=array(
+    'username'=>'admin',
+    'pwd'=>'admin',
+    'mail'=>'111@qq.com',
+    'ctime'=>time()
+ );
+  dbAdd('user',$data);
+}
